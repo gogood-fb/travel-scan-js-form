@@ -1,31 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+/* Root variables */
 :root {
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0.24);
+  --main-color: #4CAF50;
+  --hover-color: #388E3C;
+  --background-color: #f4f4f4;
+  --light-bg-color: #f0fff4;
+  --border-color: #e0e0e0;
+  --text-color: #333;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Style all conditional sections to be hidden by default */
+/* Conditional sections hidden by default */
 .conditional {
   display: none;
 }
 
-/* General styling for the form and its components */
+/* Body styling */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  margin: 0;
-  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
-/* Form container */
+/* Form container styling */
 form {
   background-color: #fff;
   padding: 30px;
@@ -36,18 +44,18 @@ form {
   margin: 20px;
 }
 
-/* Question container */
+/* Question container styling */
 .question-group {
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 /* Label styling */
 .question-group label {
   font-size: 18px;
   font-weight: bold;
-  color: #4CAF50;
+  color: var(--main-color);
 }
 
 /* Input fields and select boxes */
@@ -75,15 +83,16 @@ form {
 .conditional {
   margin-top: 10px;
   padding-left: 20px;
-  background-color: #f0fff4;
-  border-left: 4px solid #4CAF50;
+  background-color: var(--light-bg-color);
+  border-left: 4px solid var(--main-color);
 }
 
-/* Buttons */
-button {
+/* Submit Button - Hidden initially */
+#submit-button {
+  display: none;
   width: 100%;
   padding: 15px;
-  background-color: #4CAF50;
+  background-color: var(--main-color);
   color: white;
   font-size: 18px;
   border: none;
@@ -92,18 +101,18 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #388E3C;
+#submit-button:hover {
+  background-color: var(--hover-color);
 }
 
 /* Output area styling */
 #form-output {
   margin-top: 20px;
   background-color: #e8f5e9;
-  /* padding: 20px; */
-  /* border-radius: 5px; */
-  border-left: 4px solid #4CAF50;
+  border-left: 4px solid var(--main-color);
   font-style: italic;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 /* Responsive design */
@@ -113,7 +122,7 @@ button:hover {
     margin: 10px;
   }
 
-  button {
+  #submit-button {
     font-size: 16px;
   }
 }
