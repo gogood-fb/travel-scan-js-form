@@ -2,14 +2,43 @@ document.addEventListener('DOMContentLoaded', function () {
     const totalPointsPossible = 104;
     let earnedPoints = 0;
 
+    // Retrieve saved data from localStorage on load
+    const savedDestinationName = localStorage.getItem('destination-name') || '';
+    const savedCountryName = localStorage.getItem('country-name') || '';
+    document.getElementById('destination-name').value = savedDestinationName;
+    document.getElementById('country-name').value = savedCountryName;
+
+    // Save destination info when inputs change
+    document.getElementById('destination-name').addEventListener('input', () => {
+        localStorage.setItem('destination-name', document.getElementById('destination-name').value);
+    });
+
+    document.getElementById('country-name').addEventListener('input', () => {
+        localStorage.setItem('country-name', document.getElementById('country-name').value);
+    });
+
     // Function to toggle visibility of conditional sections
     function toggleConditional(selectElement, conditionalElement) {
         if (selectElement.value === 'yes') {
             conditionalElement.style.display = 'block';
-        } else {
+        } else if (selectElement.value === 'no') {
             conditionalElement.style.display = 'none';
         }
     }
+
+    // Add event listeners to toggle conditional sections
+    document.querySelectorAll('.question-group').forEach((questionGroup) => {
+        const yesNoInputs = questionGroup.querySelectorAll('input[type="radio"]');
+        const conditionalElement = questionGroup.querySelector('.conditional');
+
+        yesNoInputs.forEach(input => {
+            input.addEventListener('change', function () {
+                toggleConditional(input, conditionalElement);
+                checkFormCompletion(); // Check if form completion conditions are met after each change
+                calculateScore(); // Update score whenever a selection is made
+            });
+        });
+    });
 
     // Function to calculate score for yes/no questions, with an option for n/a
     function scoreYesNo(selectElement, yesPoints = 1) {
@@ -27,32 +56,12 @@ document.addEventListener('DOMContentLoaded', function () {
         earnedPoints = 0;
 
         // Add points for each yes/no question
-        earnedPoints += scoreYesNo(document.getElementById('question-1-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-2-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-3-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-4-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-5-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-6-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-7-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-8-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-9-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-10-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-11-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-12-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-13-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-14-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-15-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-16-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-17-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-18-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-19-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-20-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-21-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-22-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-23-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-24-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-25-select'), 1);
-        earnedPoints += scoreYesNo(document.getElementById('question-26-select'), 1);
+        for (let i = 1; i <= 26; i++) {
+            const yesRadio = document.getElementById(`question-${i}-yes`);
+            if (yesRadio && yesRadio.checked) {
+                earnedPoints += scoreYesNo(yesRadio, 1);
+            }
+        }
 
         // Add points from checked conditional checkboxes
         document.querySelectorAll('.conditional input[type="checkbox"]:checked').forEach(() => {
@@ -65,40 +74,55 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Show submit button after Question 26 is answered
-    const question26Select = document.getElementById('question-26-select');
+    // Show submit button after all required questions (up to 26) are answered
     const submitButton = document.getElementById('submit-button');
 
-    question26Select.addEventListener('change', function () {
-        if (question26Select.value !== "") {
+    function checkFormCompletion() {
+        let allAnswered = true;
+
+        // Check if all required questions (up to 26) are answered
+        for (let i = 1; i <= 26; i++) {
+            const yesRadio = document.getElementById(`question-${i}-yes`);
+            const noRadio = document.getElementById(`question-${i}-no`);
+
+            if ((yesRadio && !yesRadio.checked) && (noRadio && !noRadio.checked)) {
+                allAnswered = false;
+                break;
+            }
+        }
+
+        // Show the submit button if all required questions are answered
+        if (allAnswered) {
             submitButton.style.display = 'block';
         } else {
             submitButton.style.display = 'none';
         }
-    });
+    }
 
-    // Add event listeners to toggle conditional sections for each question
-    document.querySelectorAll('.question-group').forEach((questionGroup) => {
-        const selectElement = questionGroup.querySelector('select');
-        const conditionalElement = questionGroup.querySelector('.conditional');
+    // Attach change event listeners to each required question up to 26
+    for (let i = 1; i <= 26; i++) {
+        const yesRadio = document.getElementById(`question-${i}-yes`);
+        const noRadio = document.getElementById(`question-${i}-no`);
 
-        if (selectElement && conditionalElement) {
-            selectElement.addEventListener('change', function () {
-                toggleConditional(selectElement, conditionalElement);
-                calculateScore();
-            });
+        if (yesRadio && noRadio) {
+            yesRadio.addEventListener('change', checkFormCompletion);
+            noRadio.addEventListener('change', checkFormCompletion);
         }
-    });
+    }
 
-    // Handle form submission and display score
+    // Existing code for form submission
     const form = document.getElementById('travel-scan-form');
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         calculateScore();
 
-        // Round the score and store in sessionStorage
+        // Save overall score in sessionStorage
         const scorePercentage = Math.round((earnedPoints / totalPointsPossible) * 100);
         sessionStorage.setItem('finalScore', scorePercentage);
+
+        // Save destination info for the scorecard display
+        sessionStorage.setItem('destination-name', document.getElementById('destination-name').value);
+        sessionStorage.setItem('country-name', document.getElementById('country-name').value);
 
         // Redirect to score page
         window.location.href = 'score.html';

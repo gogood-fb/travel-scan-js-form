@@ -10,170 +10,184 @@
 
 <body>
   <form id="travel-scan-form">
-    <h3>GoGood Travel Scan Questionnaire</h3>
-    <h4>Management & Information</h4>
+    <h2>GoGood Travel Scan Questionnaire</h2>
+    <br>
+    <!-- Company Information Section -->
+    <div class="company-info">
+      <label for="destination-name">Destination Name:</label>
+      <input type="text" id="destination-name" name="destination-name" required>
+    
+      <label for="country-name">Country:</label>
+      <input type="text" id="country-name" name="country-name" required>
+    </div>
+    <br>
+
+    <h3>Management & Information</h3> <br>
 
     <!-- Question 1: Sustainability Guidelines -->
-    <div class="question-group" id="question-1">
-      <label for="question-1-select">1. Do you have rules and guidelines to enhance the
-        sustainability of your business?</label>
-      <select id="question-1-select" class="question-select" name="sustainability-guidelines">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
+<div class="question-group" id="question-1">
+  <label>1. Do you have rules and guidelines to enhance the sustainability of your business?</label>
+  <div class="radio-options">
+    <input type="radio" name="sustainability-guidelines" value="yes" id="sustainability-yes">
+    <label for="sustainability-yes">Yes</label><br>
+    <input type="radio" name="sustainability-guidelines" value="no" id="sustainability-no">
+    <label for="sustainability-no">No</label>
+  </div>
 
-      <!-- Conditional options for Question 1 -->
-      <div id="question-1-conditional" class="conditional">
-        <p>How do you communicate your sustainability rules and guidelines? (Select all that apply)
-        </p>
-        <input type="checkbox" name="sustainability-communication" value="1"> All the team
-        is aware of our rules/guidelines<br>
-        <input type="checkbox" name="sustainability-communication" value="1"> These
-        rules/guidelines are written and documented<br>
-        <input type="checkbox" name="sustainability-communication" value="1"> These
-        rules/guidelines are published on the internet<br>
-      </div>
-    </div>
+  <!-- Conditional options for Question 1 -->
+  <div id="question-1-conditional" class="conditional">
+    <p>How do you communicate your sustainability rules and guidelines? (Select all that apply)</p>
+    <input type="checkbox" name="sustainability-communication" value="1"> All the team is aware of our rules/guidelines<br>
+    <input type="checkbox" name="sustainability-communication" value="1"> These rules/guidelines are written and documented<br>
+    <input type="checkbox" name="sustainability-communication" value="1"> These rules/guidelines are published on the internet<br>
+  </div>
+</div>
 
-    <!-- Question 2: Partners and Customers Awareness -->
-    <div class="question-group" id="question-2">
-      <label for="question-2-select">2. Do you make your partners and customers aware of your steps
-        in becoming more sustainable?</label>
-      <select id="question-2-select" class="question-select" name="partners-awareness">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
+  <!-- Question 2: Partners and Customers Awareness -->
+  <div class="question-group" id="question-2">
+    <label>2. Do you make your partners and customers aware of your steps in becoming more
+      sustainable?</label>
+    <div class="radio-options">
+      <input type="radio" name="partners-awareness" value="yes" id="partners-awareness-yes">
+      <label for="partners-awareness-yes">Yes</label><br>
+      <input type="radio" name="partners-awareness" value="no" id="partners-awareness-no">
+      <label for="partners-awareness-no">No</label>
+    </div>
+  
+    <!-- Conditional options for Question 2 -->
+    <div id="question-2-conditional" class="conditional">
+      <p>How often do you make your partners and customers aware of your steps in becoming more
+        sustainable? (Select one)</p>
+      <input type="radio" name="partners-communication-frequency" value="1"> Once or twice a year<br>
+      <input type="radio" name="partners-communication-frequency" value="2"> Three times a year<br>
+      <input type="radio" name="partners-communication-frequency" value="3"> More than three times a
+      year<br>
+    </div>
+  </div>
+  
+  <h3>Caring for People</h3> <br>
+  
+  <!-- Question 3: Support for Local Initiatives -->
+  <div class="question-group" id="question-3">
+    <label>3. Do you actively support local initiatives for sustainable community development?</label>
+    <div class="radio-options">
+      <input type="radio" name="local-initiatives-support" value="yes" id="local-initiatives-support-yes">
+      <label for="local-initiatives-support-yes">Yes</label><br>
+      <input type="radio" name="local-initiatives-support" value="no" id="local-initiatives-support-no">
+      <label for="local-initiatives-support-no">No</label>
+    </div>
+  
+    <!-- Conditional options for Question 3 -->
+    <div id="question-3-conditional" class="conditional">
+      <p>Provide supporting material:</p>
+      <input type="checkbox" name="local-initiatives-material" value="1"> Images<br>
+      <input type="checkbox" name="local-initiatives-material" value="1"> Videos<br>
+      <input type="checkbox" name="local-initiatives-material" value="1"> Social Media Posts<br>
+      <br>
+      <p>How frequently does your business support such initiatives? (Select one)</p>
+      <input type="radio" name="local-initiatives-frequency" value="1"> Once a year<br>
+      <input type="radio" name="local-initiatives-frequency" value="2"> More frequent<br>
+    </div>
+  </div>
+  
+  <!-- Question 4: Limiting Resource Impact -->
+  <div class="question-group" id="question-4">
+    <label>4. Does your business limit the impact it has on the availability of resources for the
+      local community?</label>
+    <div class="radio-options">
+      <input type="radio" name="resource-impact" value="yes" id="resource-impact-yes">
+      <label for="resource-impact-yes">Yes</label><br>
+      <input type="radio" name="resource-impact" value="no" id="resource-impact-no">
+      <label for="resource-impact-no">No</label>
+    </div>
+  
+    <!-- Conditional options for Question 4 -->
+    <div id="question-4-conditional" class="conditional">
+      <p>Provide supporting material:</p>
+      <input type="checkbox" name="resource-impact-material" value="impact-details"> Impact Details<br>
+      <p>Have your activities ever jeopardized local resources? (Select one)</p>
+      <input type="radio" name="resource-jeopardy" value="1"> Yes<br>
+      <input type="radio" name="resource-jeopardy" value="0"> No<br>
+    </div>
+  </div>
 
-      <!-- Conditional options for Question 2 -->
-      <div id="question-2-conditional" class="conditional">
-        <p>How often do you make your partners and customers aware of your steps in becoming more
-          sustainable? (Select one)</p>
-        <input type="radio" name="partners-communication-frequency" value="1"> Once or twice a year<br>
-        <input type="radio" name="partners-communication-frequency" value="2"> Three times a year<br>
-        <input type="radio" name="partners-communication-frequency" value="3"> More than three times a year<br>
-      </div>
+    
+  <!-- Question 5: Access for People with Special Needs -->
+  <div class="question-group" id="question-5">
+    <label>5. Do you provide access and information for people with special needs?</label>
+    <div class="radio-options">
+      <input type="radio" name="special-needs-access" value="yes" id="special-needs-access-yes">
+      <label for="special-needs-access-yes">Yes</label><br>
+      <input type="radio" name="special-needs-access" value="no" id="special-needs-access-no">
+      <label for="special-needs-access-no">No</label>
     </div>
+  
+    <!-- Conditional options for Question 5 -->
+    <div id="question-5-conditional" class="conditional">
+      <p>Provide supporting material (pictures, accessibility features):</p>
+      <input type="checkbox" name="special-needs-material" value="1"> Pictures<br>
+      <input type="checkbox" name="special-needs-material" value="1"> Accessibility Features<br>
+    </div>
+  </div>
+  
+  <h3>Good Employment</h3> <br>
+  
+  <!-- Question 6: Policy Against Exploitation -->
+  <div class="question-group" id="question-6">
+    <label>6. Do you implement a policy against commercial, sexual, labor, or any other form of
+      exploitation or deprivation of human rights in accordance with national and/or international
+      legislation?</label>
+    <div class="radio-options">
+      <input type="radio" name="exploitation-policy" value="yes" id="exploitation-policy-yes">
+      <label for="exploitation-policy-yes">Yes</label><br>
+      <input type="radio" name="exploitation-policy" value="no" id="exploitation-policy-no">
+      <label for="exploitation-policy-no">No</label>
+    </div>
+  
+    <!-- Conditional options for Question 6 -->
+    <div id="question-6-conditional" class="conditional">
+      <p>Provide supporting material:</p>
+      <input type="checkbox" name="exploitation-policy-material" value="1"> Policy Document<br>
+      <input type="checkbox" name="exploitation-policy-material" value="1"> Implementation Details<br>
+      <input type="checkbox" name="exploitation-policy-material" value="1"> Staff Interview
+      Reports<br>
+    </div>
+  </div>
+  
+  <!-- Question 7: Respect for Local Labor Rights -->
+  <div class="question-group" id="question-7">
+    <label>7. Do you respect local labor rights and pay wages in line with the local standard?</label>
+    <div class="radio-options">
+      <input type="radio" name="local-labor-rights" value="yes" id="local-labor-rights-yes">
+      <label for="local-labor-rights-yes">Yes</label><br>
+      <input type="radio" name="local-labor-rights" value="no" id="local-labor-rights-no">
+      <label for="local-labor-rights-no">No</label><br>
+      <input type="radio" name="local-labor-rights" value="na" id="local-labor-rights-na">
+      <label for="local-labor-rights-na">N/A</label>
+    </div>
+  
+    <!-- Conditional options for Question 7 -->
+    <div id="question-7-conditional" class="conditional">
+      <p>Provide supporting material:</p>
+      <input type="checkbox" name="local-labor-rights-material" value="1"> Employee Contracts<br>
+      <input type="checkbox" name="local-labor-rights-material" value="1"> Employee Interview
+      Reports<br>
+    </div>
+  </div>
 
-    <h4>Caring for People</h4>
-
-    <!-- Question 3: Support for local initiatives -->
-    <div class="question-group" id="question-3">
-      <label for="question-3-select">3. Do you actively support local initiatives for sustainable
-        community development?</label>
-      <select id="question-3-select" class="question-select" name="local-initiatives-support">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
     
-      <!-- Conditional options for Question 3 -->
-      <div id="question-3-conditional" class="conditional">
-        <p>Provide supporting material:</p>
-        <input type="checkbox" name="local-initiatives-material" value="1"> Images<br>
-        <input type="checkbox" name="local-initiatives-material" value="1"> Videos<br>
-        <input type="checkbox" name="local-initiatives-material" value="1"> Social Media
-        Posts<br>
-        <p>How frequently does your business support such initiatives? (Select one)</p>
-        <input type="radio" name="local-initiatives-frequency" value="1"> Once a year<br>
-        <input type="radio" name="local-initiatives-frequency" value="2"> More frequent<br>
-      </div>
-    </div>
-    
-    <!-- Question 4: Limiting resource impact -->
-    <div class="question-group" id="question-4">
-      <label for="question-4-select">4. Does your business limit the impact it has on the availability
-        of resources for the local community?</label>
-      <select id="question-4-select" class="question-select" name="resource-impact">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
-    
-      <!-- Conditional options for Question 4 -->
-      <div id="question-4-conditional" class="conditional">
-        <p>Provide supporting material:</p>
-        <input type="checkbox" name="resource-impact-material" value="impact-details"> Impact
-        Details<br>
-        <p>Have your activities ever jeopardized local resources? (Select one)</p>
-        <input type="radio" name="resource-jeopardy" value="1"> Yes<br>
-        <input type="radio" name="resource-jeopardy" value="0"> No<br>
-      </div>
-    </div>
-    
-    <!-- Question 5: Access for people with special needs -->
-    <div class="question-group" id="question-5">
-      <label for="question-5-select">5. Do you provide access and information for people with special
-        needs?</label>
-      <select id="question-5-select" class="question-select" name="special-needs-access">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
-    
-      <!-- Conditional options for Question 5 -->
-      <div id="question-5-conditional" class="conditional">
-        <p>Provide supporting material (pictures, accessibility features):</p>
-        <input type="checkbox" name="special-needs-material" value="1"> Pictures<br>
-        <input type="checkbox" name="special-needs-material" value="1">
-        Accessibility Features<br>
-      </div>
-    </div>
-
-    <h4>Good Employment</h4>
-
-    <!-- Question 6: Policy against exploitation -->
-    <div class="question-group" id="question-6">
-      <label for="question-6-select">6. Do you implement a policy against commercial, sexual, labor, or
-        any other form of exploitation or deprivation of human rights in accordance with national and/or
-        international legislation?</label>
-      <select id="question-6-select" class="question-select" name="exploitation-policy">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
-    
-      <!-- Conditional options for Question 6 -->
-      <div id="question-6-conditional" class="conditional">
-        <p>Provide supporting material:</p>
-        <input type="checkbox" name="exploitation-policy-material" value="1"> Policy Document<br>
-        <input type="checkbox" name="exploitation-policy-material" value="1"> Implementation Details<br>
-        <input type="checkbox" name="exploitation-policy-material" value="1"> Staff Interview Reports<br>
-      </div>
-    </div>
-    
-    <!-- Question 7: Respect for local labor rights -->
-    <div class="question-group" id="question-7">
-      <label for="question-7-select">7. Do you respect local labor rights and pay wages in line with the
-        local standard?</label>
-      <select id="question-7-select" class="question-select" name="local-labor-rights">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-        <option value="na">N/A</option>
-      </select>
-    
-      <!-- Conditional options for Question 7 -->
-      <div id="question-7-conditional" class="conditional">
-        <p>Provide supporting material:</p>
-        <input type="checkbox" name="local-labor-rights-material" value="1"> Employee
-        Contracts<br>
-        <input type="checkbox" name="local-labor-rights-material" value="1"> Employee
-        Interview Reports<br>
-      </div>
-    </div>
-    
-    <!-- Question 8: Non-discriminatory employment -->
+    <!-- Question 8: Non-discriminatory Employment -->
     <div class="question-group" id="question-8">
-      <label for="question-8-select">8. Do you provide employment opportunities without discriminating
-        against anyone by gender, ethnicity, religion, disability, or in other ways?</label>
-      <select id="question-8-select" class="question-select" name="non-discriminatory-employment">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-        <option value="na">N/A</option>
-      </select>
+      <label>8. Do you provide employment opportunities without discriminating against anyone by gender,
+        ethnicity, religion, disability, or in other ways?</label>
+      <div class="radio-options">
+        <input type="radio" name="non-discriminatory-employment" value="yes" id="non-discriminatory-employment-yes">
+        <label for="non-discriminatory-employment-yes">Yes</label><br>
+        <input type="radio" name="non-discriminatory-employment" value="no" id="non-discriminatory-employment-no">
+        <label for="non-discriminatory-employment-no">No</label><br>
+        <input type="radio" name="non-discriminatory-employment" value="na" id="non-discriminatory-employment-na">
+        <label for="non-discriminatory-employment-na">N/A</label>
+      </div>
     
       <!-- Conditional options for Question 8 -->
       <div id="question-8-conditional" class="conditional">
@@ -183,148 +197,146 @@
         <input type="checkbox" name="non-discriminatory-employment-material" value="1"> Recruitment Process Policy<br>
       </div>
     </div>
-
-    <h4>Caring for Climate</h4>
-
-    <!-- Question 9: Minimizing energy use -->
+    
+    <h3>Caring for Climate</h3> <br>
+    
+    <!-- Question 9: Minimizing Energy Use -->
     <div class="question-group" id="question-9">
-      <label for="question-9-select">9. Do you use equipment and implement practices that minimize
-        energy use? (e.g. LED lights, energy-efficient equipment, motion detector lights)</label>
-      <select id="question-9-select" class="question-select" name="minimize-energy-use">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
+      <label>9. Do you use equipment and implement practices that minimize energy use? (e.g., LED
+        lights, energy-efficient equipment, motion detector lights)</label>
+      <div class="radio-options">
+        <input type="radio" name="minimize-energy-use" value="yes" id="minimize-energy-use-yes">
+        <label for="minimize-energy-use-yes">Yes</label><br>
+        <input type="radio" name="minimize-energy-use" value="no" id="minimize-energy-use-no">
+        <label for="minimize-energy-use-no">No</label>
+      </div>
     
       <!-- Conditional options for Question 9 -->
       <div id="question-9-conditional" class="conditional">
         <p>Provide supporting material:</p>
-        <input type="checkbox" name="energy-saving-material" value="1"> Policies or guidelines (e.g. turning off lights, carpooling)<br>
-        <input type="checkbox" name="energy-saving-material" value="1"> Renewable energy equipment (e.g. solar, wind, thermal)<br>
+        <input type="checkbox" name="energy-saving-material" value="1"> Policies or guidelines (e.g., turning off lights, carpooling)<br>
+        <input type="checkbox" name="energy-saving-material" value="1"> Renewable energy equipment (e.g., solar, wind, thermal)<br>
         <input type="checkbox" name="energy-saving-material" value="1"> LED lights<br>
       </div>
     </div>
     
-    <!-- Question 10: Preventing unnecessary heating or cooling -->
+    <!-- Question 10: Preventing Unnecessary Heating or Cooling -->
     <div class="question-group" id="question-10">
-      <label for="question-10-select">10. Do you prevent unnecessary use of heating or cooling (e.g. on
-        terraces)?</label>
-      <select id="question-10-select" class="question-select" name="prevent-heating-cooling">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-        <option value="na">N/A</option>
-      </select>
+      <label>10. Do you prevent unnecessary use of heating or cooling (e.g., on terraces)?</label>
+      <div class="radio-options">
+        <input type="radio" name="prevent-heating-cooling" value="yes" id="prevent-heating-cooling-yes">
+        <label for="prevent-heating-cooling-yes">Yes</label><br>
+        <input type="radio" name="prevent-heating-cooling" value="no" id="prevent-heating-cooling-no">
+        <label for="prevent-heating-cooling-no">No</label><br>
+        <input type="radio" name="prevent-heating-cooling" value="na" id="prevent-heating-cooling-na">
+        <label for="prevent-heating-cooling-na">N/A</label>
+      </div>
     
       <!-- Conditional options for Question 10 -->
       <div id="question-10-conditional" class="conditional">
         <p>Provide supporting material:</p>
         <input type="checkbox" name="heating-cooling-material" value="1"> Fans or warm seats<br>
-        <input type="checkbox" name="heating-cooling-material" value="1"> Optimized
-        airflow or natural insulation<br>
+        <input type="checkbox" name="heating-cooling-material" value="1"> Optimized airflow or natural
+        insulation<br>
       </div>
     </div>
     
-    <!-- Question 11: Air conditioning usage -->
+    <!-- Question 11: Air Conditioning Usage -->
     <div class="question-group" id="question-11">
-      <label for="question-11-select">11. Do you only turn on air conditioning (A/C) when necessary and
-        ask guests to turn it off when they don't need it?</label>
-      <select id="question-11-select" class="question-select" name="air-conditioning-use">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-        <option value="na">N/A</option>
-      </select>
+      <label>11. Do you only turn on air conditioning (A/C) when necessary and ask guests to turn it off
+        when they don't need it?</label>
+      <div class="radio-options">
+        <input type="radio" name="air-conditioning-use" value="yes" id="air-conditioning-use-yes">
+        <label for="air-conditioning-use-yes">Yes</label><br>
+        <input type="radio" name="air-conditioning-use" value="no" id="air-conditioning-use-no">
+        <label for="air-conditioning-use-no">No</label><br>
+        <input type="radio" name="air-conditioning-use" value="na" id="air-conditioning-use-na">
+        <label for="air-conditioning-use-na">N/A</label>
+      </div>
     
       <!-- Conditional options for Question 11 -->
       <div id="question-11-conditional" class="conditional">
         <p>Provide supporting material:</p>
         <input type="checkbox" name="ac-material" value="1"> A/C Policy<br>
-        <input type="checkbox" name="ac-material" value="1"> Policy communication to
-        guests and employees<br>
-        <input type="checkbox" name="ac-material" value="1"> Fans in rooms as
-        alternative<br>
+        <input type="checkbox" name="ac-material" value="1"> Policy communication to guests and employees<br>
+        <input type="checkbox" name="ac-material" value="1"> Fans in rooms as an alternative<br>
       </div>
     </div>
+
     
-    <!-- Question 12: Transitioning to renewable energy -->
+    <!-- Question 12: Transitioning to Renewable Energy -->
     <div class="question-group" id="question-12">
-      <label for="question-12-select">12. Are you trying to transition from non-renewable to renewable
-        energy (wind, hydro, solar)?</label>
-      <select id="question-12-select" class="question-select" name="transition-renewable-energy">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
+      <label>12. Are you trying to transition from non-renewable to renewable energy (wind, hydro, solar)?</label>
+      <div class="radio-options">
+        <input type="radio" name="transition-renewable-energy" value="yes" id="transition-renewable-energy-yes">
+        <label for="transition-renewable-energy-yes">Yes</label><br>
+        <input type="radio" name="transition-renewable-energy" value="no" id="transition-renewable-energy-no">
+        <label for="transition-renewable-energy-no">No</label>
+      </div>
     
       <!-- Conditional options for Question 12 -->
       <div id="question-12-conditional" class="conditional">
         <p>Provide supporting material:</p>
         <input type="checkbox" name="renewable-energy-material" value="1"> Resource for electricity<br>
-        <input type="checkbox" name="renewable-energy-material" value="1"> Resource for
-        heating<br>
-        <input type="checkbox" name="renewable-energy-material" value="1"> Electric
-        vehicles<br>
-        <input type="checkbox" name="renewable-energy-material" value="1"> Biogas or
-        biodiesel<br>
-        <input type="checkbox" name="renewable-energy-material" value="1"> Transition plan
-        to renewable energy<br>
+        <input type="checkbox" name="renewable-energy-material" value="1"> Resource for heating<br>
+        <input type="checkbox" name="renewable-energy-material" value="1"> Electric vehicles<br>
+        <input type="checkbox" name="renewable-energy-material" value="1"> Biogas or biodiesel<br>
+        <input type="checkbox" name="renewable-energy-material" value="1"> Transition plan to renewable
+        energy<br>
       </div>
     </div>
     
-    <!-- Question 13: Share of renewable energy -->
+    <!-- Question 13: Share of Renewable Energy -->
     <div class="question-group" id="question-13">
-      <label for="question-13-select">13. Does part of your electricity come from renewable
-        energy?</label>
-      <select id="question-13-select" class="question-select" name="share-renewable-energy">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-        <option value="na">N/A</option>
-      </select>
+      <label>13. Does part of your electricity come from renewable energy?</label>
+      <div class="radio-options">
+        <input type="radio" name="share-renewable-energy" value="yes" id="share-renewable-energy-yes">
+        <label for="share-renewable-energy-yes">Yes</label><br>
+        <input type="radio" name="share-renewable-energy" value="no" id="share-renewable-energy-no">
+        <label for="share-renewable-energy-no">No</label><br>
+        <input type="radio" name="share-renewable-energy" value="na" id="share-renewable-energy-na">
+        <label for="share-renewable-energy-na">N/A</label>
+      </div>
     
       <!-- Conditional options for Question 13 -->
       <div id="question-13-conditional" class="conditional">
         <p>Provide supporting material:</p>
-        <input type="checkbox" name="renewable-energy-share-material" value="1"> Energy bill
-        from electricity company<br>
+        <input type="checkbox" name="renewable-energy-share-material" value="1"> Energy bill from electricity company<br>
       </div>
     </div>
     
-    <!-- Question 14: Adaptation to climate emergency -->
+    <!-- Question 14: Adaptation to Climate Emergency -->
     <div class="question-group" id="question-14">
-      <label for="question-14-select">14. Do you implement measures to adapt to the expected impacts of
-        the climate emergency?</label>
-      <select id="question-14-select" class="question-select" name="climate-adaptation">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-        <option value="na">N/A</option>
-      </select>
+      <label>14. Do you implement measures to adapt to the expected impacts of the climate emergency?</label>
+      <div class="radio-options">
+        <input type="radio" name="climate-adaptation" value="yes" id="climate-adaptation-yes">
+        <label for="climate-adaptation-yes">Yes</label><br>
+        <input type="radio" name="climate-adaptation" value="no" id="climate-adaptation-no">
+        <label for="climate-adaptation-no">No</label><br>
+        <input type="radio" name="climate-adaptation" value="na" id="climate-adaptation-na">
+        <label for="climate-adaptation-na">N/A</label>
+      </div>
     
       <!-- Conditional options for Question 14 -->
       <div id="question-14-conditional" class="conditional">
         <p>Provide supporting material:</p>
-        <input type="checkbox" name="climate-adaptation-material" value="1"> Pictures of green
-        areas<br>
-        <input type="checkbox" name="climate-adaptation-material" value="1"> Building
-        projects for climate adaptation<br>
-        <input type="checkbox" name="climate-adaptation-material" value="1">
-        Rainwater collection<br>
+        <input type="checkbox" name="climate-adaptation-material" value="1"> Pictures of green areas<br>
+        <input type="checkbox" name="climate-adaptation-material" value="1"> Building projects for climate adaptation<br>
+        <input type="checkbox" name="climate-adaptation-material" value="1"> Rainwater collection<br>
       </div>
     </div>
-
-    <h4>Reducing Waste</h4>
-
-    <!-- Question 15: Reducing plastic waste -->
+    
+    <h3>Reducing Waste</h3> <br>
+    
+    <!-- Question 15: Reducing Plastic Waste -->
     <div class="question-group" id="question-15">
-      <label for="question-15-select">15. Do you actively work to reduce the amount of plastic
-        waste?</label>
-      <select id="question-15-select" class="question-select" name="reduce-plastic-waste">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
+      <label>15. Do you actively work to reduce the amount of plastic waste?</label>
+      <div class="radio-options">
+        <input type="radio" name="reduce-plastic-waste" value="yes" id="reduce-plastic-waste-yes">
+        <label for="reduce-plastic-waste-yes">Yes</label><br>
+        <input type="radio" name="reduce-plastic-waste" value="no" id="reduce-plastic-waste-no">
+        <label for="reduce-plastic-waste-no">No</label>
+      </div>
     
       <!-- Conditional options for Question 15 -->
       <div id="question-15-conditional" class="conditional">
@@ -334,16 +346,17 @@
         <input type="checkbox" name="plastic-waste-material" value="1"> Check for water dispensers and glass bottles<br>
       </div>
     </div>
+
     
-    <!-- Question 16: Reducing food waste -->
+    <!-- Question 16: Reducing Food Waste -->
     <div class="question-group" id="question-16">
-      <label for="question-16-select">16. Do you actively work to reduce the amount of food
-        waste?</label>
-      <select id="question-16-select" class="question-select" name="reduce-food-waste">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
+      <label>16. Do you actively work to reduce the amount of food waste?</label>
+      <div class="radio-options">
+        <input type="radio" name="reduce-food-waste" value="yes" id="reduce-food-waste-yes">
+        <label for="reduce-food-waste-yes">Yes</label><br>
+        <input type="radio" name="reduce-food-waste" value="no" id="reduce-food-waste-no">
+        <label for="reduce-food-waste-no">No</label>
+      </div>
     
       <!-- Conditional options for Question 16 -->
       <div id="question-16-conditional" class="conditional">
@@ -356,15 +369,16 @@
       </div>
     </div>
     
-    <!-- Question 17: Reuse or recycle waste -->
+    <!-- Question 17: Reuse or Recycle Waste -->
     <div class="question-group" id="question-17">
-      <label for="question-17-select">17. Do you implement measures to reuse or recycle waste when
-        reduction is not feasible?</label>
-      <select id="question-17-select" class="question-select" name="reuse-recycle-waste">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
+      <label>17. Do you implement measures to reuse or recycle waste when reduction is not
+        feasible?</label>
+      <div class="radio-options">
+        <input type="radio" name="reuse-recycle-waste" value="yes" id="reuse-recycle-waste-yes">
+        <label for="reuse-recycle-waste-yes">Yes</label><br>
+        <input type="radio" name="reuse-recycle-waste" value="no" id="reuse-recycle-waste-no">
+        <label for="reuse-recycle-waste-no">No</label>
+      </div>
     
       <!-- Conditional options for Question 17 -->
       <div id="question-17-conditional" class="conditional">
@@ -377,15 +391,15 @@
       </div>
     </div>
     
-    <!-- Question 18: Preventing the use of disposables -->
+    <!-- Question 18: Preventing the Use of Disposables -->
     <div class="question-group" id="question-18">
-      <label for="question-18-select">18. Do you prevent the use of disposables and offer reusable
-        alternatives instead?</label>
-      <select id="question-18-select" class="question-select" name="prevent-disposables">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
+      <label>18. Do you prevent the use of disposables and offer reusable alternatives instead?</label>
+      <div class="radio-options">
+        <input type="radio" name="prevent-disposables" value="yes" id="prevent-disposables-yes">
+        <label for="prevent-disposables-yes">Yes</label><br>
+        <input type="radio" name="prevent-disposables" value="no" id="prevent-disposables-no">
+        <label for="prevent-disposables-no">No</label>
+      </div>
     
       <!-- Conditional options for Question 18 -->
       <div id="question-18-conditional" class="conditional">
@@ -396,18 +410,18 @@
         <input type="checkbox" name="disposables-material" value="1"> Bulk purchasing (e.g., shampoo, soap, cleaning products)<br>
       </div>
     </div>
-
-    <h4>Caring for Water</h4>
-
-    <!-- Question 19: Reducing water consumption and pollution -->
+    
+    <h3>Caring for Water</h3> <br>
+    
+    <!-- Question 19: Reducing Water Consumption and Pollution -->
     <div class="question-group" id="question-19">
-      <label for="question-19-select">19. Do you implement measures to reduce water consumption and
-        water pollution?</label>
-      <select id="question-19-select" class="question-select" name="reduce-water-consumption">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
+      <label>19. Do you implement measures to reduce water consumption and water pollution?</label>
+      <div class="radio-options">
+        <input type="radio" name="reduce-water-consumption" value="yes" id="reduce-water-consumption-yes">
+        <label for="reduce-water-consumption-yes">Yes</label><br>
+        <input type="radio" name="reduce-water-consumption" value="no" id="reduce-water-consumption-no">
+        <label for="reduce-water-consumption-no">No</label>
+      </div>
     
       <!-- Conditional options for Question 19 -->
       <div id="question-19-conditional" class="conditional">
@@ -418,96 +432,104 @@
         <input type="checkbox" name="water-saving-material" value="1"> Show their septic tanks or other water treatment methods<br>
       </div>
     </div>
-    
-    <!-- Question 20: Towel and linen change policy -->
-    <div class="question-group" id="question-20">
-      <label for="question-20-select">20. For accommodation: Do you encourage your guests to indicate
-        when towels and linen should be changed?</label>
-      <select id="question-20-select" class="question-select" name="towel-linen-policy">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-        <option value="na">N/A</option>
-      </select>
-    
-      <!-- Conditional options for Question 20 -->
-      <div id="question-20-conditional" class="conditional">
-        <p>Provide supporting material:</p>
-        <input type="checkbox" name="towel-linen-material" value="1"> Check whether they have signs in the rooms<br>
-        <input type="checkbox" name="towel-linen-material" value="1"> Ask staff about the towel and linen policy<br>
-      </div>
-    </div>
 
-    <h4>Reducing Polution</h4>
-
-    <!-- Question 21: Avoiding air pollution -->
-    <div class="question-group" id="question-21">
-      <label for="question-21-select">21. Do you implement measures to avoid air pollution?</label>
-      <select id="question-21-select" class="question-select" name="avoid-air-pollution">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
     
-      <!-- Conditional options for Question 21 -->
-      <div id="question-21-conditional" class="conditional">
-        <p>Provide supporting material:</p>
-        <input type="checkbox" name="air-pollution-material" value="1"> Show what kind of material is used for cooking<br>
-        <input type="checkbox" name="air-pollution-material" value="1"> Show the servicing of vehicles (if applicable)<br>
-        <input type="checkbox" name="air-pollution-material" value="1"> No ozone-depleting substances (CFCs, HCFCs, halons, etc.)<br>
-      </div>
+  <!-- Question 20: Towel and Linen Change Policy -->
+  <div class="question-group" id="question-20">
+    <label>20. For accommodation: Do you encourage your guests to indicate when towels and linen
+      should be changed?</label>
+    <div class="radio-options">
+      <input type="radio" name="towel-linen-policy" value="yes" id="towel-linen-policy-yes">
+      <label for="towel-linen-policy-yes">Yes</label><br>
+      <input type="radio" name="towel-linen-policy" value="no" id="towel-linen-policy-no">
+      <label for="towel-linen-policy-no">No</label><br>
+      <input type="radio" name="towel-linen-policy" value="na" id="towel-linen-policy-na">
+      <label for="towel-linen-policy-na">N/A</label>
     </div>
-    
-    <!-- Question 22: Protecting neighbors and environment from noise -->
-    <div class="question-group" id="question-22">
-      <label for="question-22-select">22. Do you implement measures to protect your neighbors and the
-        natural environment against your noise?</label>
-      <select id="question-22-select" class="question-select" name="protect-against-noise">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
-    
-      <!-- Conditional options for Question 22 -->
-      <div id="question-22-conditional" class="conditional">
-        <p>Provide supporting material:</p>
-        <input type="checkbox" name="noise-pollution-material" value="1"> Pictures of signs showing quiet hours for guests<br>
-        <input type="checkbox" name="noise-pollution-material" value="1"> Show the gardening tools used<br>
-        <input type="checkbox" name="noise-pollution-material" value="1"> Show soundproofing of the building<br>
-        <input type="checkbox" name="noise-pollution-material" value="1"> Show communication sent to neighbors about noise events<br>
-      </div>
+  
+    <!-- Conditional options for Question 20 -->
+    <div id="question-20-conditional" class="conditional">
+      <p>Provide supporting material:</p>
+      <input type="checkbox" name="towel-linen-material" value="1"> Check whether they have signs in the rooms<br>
+      <input type="checkbox" name="towel-linen-material" value="1"> Ask staff about the towel and linen policy<br>
     </div>
-
-    <h4>Food & Products</h4>
-
-    <!-- Question 23: Prioritizing local suppliers -->
-    <div class="question-group" id="question-23">
-      <label for="question-23-select">23. Do you prioritize local suppliers?</label>
-      <select id="question-23-select" class="question-select" name="local-suppliers-priority">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
-    
-      <!-- Conditional options for Question 23 -->
-      <div id="question-23-conditional" class="conditional">
-        <p>Provide supporting material:</p>
-        <input type="checkbox" name="local-suppliers-material" value="1"> List of suppliers and what products they provide<br>
-        <input type="checkbox" name="local-suppliers-material" value="1"> Show the local products sold/used<br>
-        <input type="checkbox" name="local-suppliers-material" value="1"> Invoices or receipts<br>
-      </div>
+  </div>
+  
+  <h3>Reducing Pollution</h3> <br>
+  
+  <!-- Question 21: Avoiding Air Pollution -->
+  <div class="question-group" id="question-21">
+    <label>21. Do you implement measures to avoid air pollution?</label>
+    <div class="radio-options">
+      <input type="radio" name="avoid-air-pollution" value="yes" id="avoid-air-pollution-yes">
+      <label for="avoid-air-pollution-yes">Yes</label><br>
+      <input type="radio" name="avoid-air-pollution" value="no" id="avoid-air-pollution-no">
+      <label for="avoid-air-pollution-no">No</label>
     </div>
+  
+    <!-- Conditional options for Question 21 -->
+    <div id="question-21-conditional" class="conditional">
+      <p>Provide supporting material:</p>
+      <input type="checkbox" name="air-pollution-material" value="1"> Show what kind of material is used for cooking<br>
+      <input type="checkbox" name="air-pollution-material" value="1"> Show the servicing of vehicles (if applicable)<br>
+      <input type="checkbox" name="air-pollution-material" value="1"> No ozone-depleting substances (CFCs, HCFCs, halons, etc.)<br>
+    </div>
+  </div>
+  
+  <!-- Question 22: Protecting Neighbors and Environment from Noise -->
+  <div class="question-group" id="question-22">
+    <label>22. Do you implement measures to protect your neighbors and the natural environment against
+      your noise?</label>
+    <div class="radio-options">
+      <input type="radio" name="protect-against-noise" value="yes" id="protect-against-noise-yes">
+      <label for="protect-against-noise-yes">Yes</label><br>
+      <input type="radio" name="protect-against-noise" value="no" id="protect-against-noise-no">
+      <label for="protect-against-noise-no">No</label>
+    </div>
+  
+    <!-- Conditional options for Question 22 -->
+    <div id="question-22-conditional" class="conditional">
+      <p>Provide supporting material:</p>
+      <input type="checkbox" name="noise-pollution-material" value="1"> Pictures of signs showing quiet hours for guests<br>
+      <input type="checkbox" name="noise-pollution-material" value="1"> Show the gardening tools used<br>
+      <input type="checkbox" name="noise-pollution-material" value="1"> Show soundproofing of the building<br>
+      <input type="checkbox" name="noise-pollution-material" value="1"> Show communication sent to neighbors about noise events<br>
+    </div>
+  </div>
+  
+  <h3>Food & Products</h3> <br>
+  
+  <!-- Question 23: Prioritizing Local Suppliers -->
+  <div class="question-group" id="question-23">
+    <label>23. Do you prioritize local suppliers?</label>
+    <div class="radio-options">
+      <input type="radio" name="local-suppliers-priority" value="yes" id="local-suppliers-priority-yes">
+      <label for="local-suppliers-priority-yes">Yes</label><br>
+      <input type="radio" name="local-suppliers-priority" value="no" id="local-suppliers-priority-no">
+      <label for="local-suppliers-priority-no">No</label>
+    </div>
+  
+    <!-- Conditional options for Question 23 -->
+    <div id="question-23-conditional" class="conditional">
+      <p>Provide supporting material:</p>
+      <input type="checkbox" name="local-suppliers-material" value="1"> List of suppliers and what products they provide<br>
+      <input type="checkbox" name="local-suppliers-material" value="1"> Show the local products sold/used<br>
+      <input type="checkbox" name="local-suppliers-material" value="1"> Invoices or receipts<br>
+    </div>
+  </div>
+
     
-    <!-- Question 24: Prioritizing sustainable and fair-trade suppliers -->
+    <!-- Question 24: Prioritizing Sustainable and Fair-Trade Suppliers -->
     <div class="question-group" id="question-24">
-      <label for="question-24-select">24. Do you prioritize sustainable and fair-trade
-        suppliers?</label>
-      <select id="question-24-select" class="question-select" name="sustainable-fairtrade-suppliers">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-        <option value="na">N/A</option>
-      </select>
+      <label>24. Do you prioritize sustainable and fair-trade suppliers?</label>
+      <div class="radio-options">
+        <input type="radio" name="sustainable-fairtrade-suppliers" value="yes" id="sustainable-fairtrade-suppliers-yes">
+        <label for="sustainable-fairtrade-suppliers-yes">Yes</label><br>
+        <input type="radio" name="sustainable-fairtrade-suppliers" value="no" id="sustainable-fairtrade-suppliers-no">
+        <label for="sustainable-fairtrade-suppliers-no">No</label><br>
+        <input type="radio" name="sustainable-fairtrade-suppliers" value="na" id="sustainable-fairtrade-suppliers-na">
+        <label for="sustainable-fairtrade-suppliers-na">N/A</label>
+      </div>
     
       <!-- Conditional options for Question 24 -->
       <div id="question-24-conditional" class="conditional">
@@ -517,42 +539,44 @@
         <input type="checkbox" name="fairtrade-suppliers-material" value="1"> Certificate/proof of fair-trade status of the provider<br>
       </div>
     </div>
-
-    <h4>Caring for Nature</h4>
-
-    <!-- Question 25: Supporting biodiversity conservation -->
+    
+    <h3>Caring for Nature</h3> <br>
+    
+    <!-- Question 25: Supporting Biodiversity Conservation -->
     <div class="question-group" id="question-25">
-      <label for="question-25-select">25. Do you support and contribute to biodiversity conservation
-        (on-site and online, e.g., you share information, you are part of environmental
-        movements)?</label>
-      <select id="question-25-select" class="question-select" name="biodiversity-conservation-support">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
+      <label>25. Do you support and contribute to biodiversity conservation (on-site and online, e.g.,
+        you share information, you are part of environmental movements)?</label>
+      <div class="radio-options">
+        <input type="radio" name="biodiversity-conservation-support" value="yes" id="biodiversity-conservation-support-yes">
+        <label for="biodiversity-conservation-support-yes">Yes</label><br>
+        <input type="radio" name="biodiversity-conservation-support" value="no" id="biodiversity-conservation-support-no">
+        <label for="biodiversity-conservation-support-no">No</label>
+      </div>
     
       <!-- Conditional options for Question 25 -->
       <div id="question-25-conditional" class="conditional">
         <p>Provide supporting material:</p>
-        <input type="checkbox" name="biodiversity-material" value="1"> Show local plants used on the property<br>
+        <input type="checkbox" name="biodiversity-material" value="1"> Show local plants used on the
+        property<br>
         <input type="checkbox" name="biodiversity-material" value="1"> Ask how the garden and natural area were before the business started<br>
         <input type="checkbox" name="biodiversity-material" value="1"> Ask what they do to take care of nature in their area<br>
         <input type="checkbox" name="biodiversity-material" value="1"> Examples of NGOs they work with<br>
         <input type="checkbox" name="biodiversity-material" value="1"> Examples of initiatives they have started during the year<br>
       </div>
     </div>
-
-    <h4>Caring for Culture</h4>
-
-    <!-- Question 26: Supporting and contributing to local culture -->
+    
+    <h3>Caring for Culture</h3> <br>
+    
+    <!-- Question 26: Supporting and Contributing to Local Culture -->
     <div class="question-group" id="question-26">
-      <label for="question-26-select">26. Do you support and contribute to the protection, preservation,
-        and enhancement of local sites, traditions, and culture?</label>
-      <select id="question-26-select" class="question-select" name="local-culture-support">
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
+      <label>26. Do you support and contribute to the protection, preservation, and enhancement of local
+        sites, traditions, and culture?</label>
+      <div class="radio-options">
+        <input type="radio" name="local-culture-support" value="yes" id="local-culture-support-yes">
+        <label for="local-culture-support-yes">Yes</label><br>
+        <input type="radio" name="local-culture-support" value="no" id="local-culture-support-no">
+        <label for="local-culture-support-no">No</label>
+      </div>
     
       <!-- Conditional options for Question 26 -->
       <div id="question-26-conditional" class="conditional">
@@ -567,7 +591,7 @@
       </div>
     </div>
 
-    <h4>Bonus Question</h4>
+    <h3>Bonus Question</h3> <br>
 
     <div class="question-group" id="question-bonus">
       <label for="bonus-text">Please indicate any sustainable actions and practices you have adopted

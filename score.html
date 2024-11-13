@@ -4,9 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Score</title>
+  <title>Good Travel Scorecard</title>
   <style>
-    /* Basic reset and font import */
     @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
 
     * {
@@ -15,67 +14,161 @@
       padding: 0;
     }
 
-    /* Body styling */
     body {
       font-family: 'Quicksand', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      background: linear-gradient(135deg, #f4f4f4 50%, #ffffff 100%);
+      min-height: 100vh;
+      background: #f4f4f4;
       color: #277929;
+      padding: 20px;
     }
 
-    /* Container styling */
     .score-container {
-      text-align: center;
-      padding: 40px 30px;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      max-width: 900px;
       background-color: #ffffff;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      max-width: 600px;
-      width: 100%;
+      overflow: hidden;
     }
 
-    /* Heading styling */
-    .score-container h1 {
-      font-size: 1.8em;
+    /* Left Column - Score Summary */
+    .score-info {
+      background-color: #ffffff;
+      padding: 30px;
+      width: 40%;
+      text-align: center;
+      border-right: 4px solid #e16639;
+    }
+
+    .score-info h1 {
+      font-size: 1.5em;
       color: #277929;
       margin-bottom: 10px;
       font-weight: 600;
     }
 
-    .score-container h2 {
-      font-size: 1.4em;
+    .score-info h2 {
+      font-size: 1.2em;
       color: #4CAF50;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       font-weight: 600;
     }
 
-    /* Percentage styling */
-    .score-container .percentage {
-      font-size: 4em;
-      font-weight: 600;
+    .destination-info {
+      font-size: 1em;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .evaluation-note {
+      font-size: 0.9em;
+      color: #333;
+      margin-top: 15px;
+    }
+
+    .date {
+      font-size: 0.9em;
+      color: #d32f2f;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .overall-score-label {
+      font-size: 1.1em;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .overall-score-value {
+      font-size: 2.5em;
+      font-weight: bold;
       color: #277929;
-      margin-top: 20px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .overall-score-bar {
+      background-color: #3e3e3e;
+      border-radius: 15px;
+      height: 30px;
+      width: 80%;
+      margin: 0 auto 10px;
+      position: relative;
+    }
+
+    .overall-score-fill {
+      background-color: #4CAF50;
+      height: 100%;
+      border-radius: 15px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+    }
+
+    .score-bar {
+      background-color: #87f3a4;
+      border-radius: 15px;
+      height: 30px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 1em;
+      padding-left: 10px;
+      margin-bottom: 15px;
+    }
+
+    .score-fill {
+      background-color: #377943;
+      height: 100%;
+      border-radius: 15px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+    }
+
+    .theme-text {
+      display: flex;
+      align-items: center;
+      z-index: 2;
+      position: relative;
+      width: 100%;
+      padding-left: 10px;
+    }
+
+    .theme-icon {
+      margin-right: 10px;
+      font-size: 1.2em;
+    }
+
+    /* Right Column - Category Scores */
+    .theme-scores {
+      background-color: #e16639;
+      color: white;
+      padding: 30px;
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     /* Responsive design */
     @media (max-width: 600px) {
       .score-container {
-        padding: 30px 20px;
+        flex-direction: column;
       }
 
-      .score-container h1 {
-        font-size: 1.5em;
-      }
-
-      .score-container h2 {
-        font-size: 1.2em;
-      }
-
-      .score-container .percentage {
-        font-size: 3em;
+      .score-info,
+      .theme-scores {
+        width: 100%;
+        padding: 20px;
       }
     }
   </style>
@@ -83,16 +176,136 @@
 
 <body>
   <div class="score-container">
-    <h1>Thank you for completing the GoGood Travel Scan!</h1>
-    <h2>Your Sustainability Score</h2>
-    <div class="percentage" id="score-percentage"></div>
+    <!-- Left Column: Overall Score Summary -->
+    <div class="score-info">
+      <h1>Green Destinations</h1>
+      <h2>Good Travel Scorecard</h2><br>
+
+      <!-- Destination Info -->
+      <p class="destination-info"><strong>Destination Name:</strong> <span
+          id="destination-name">Your Destination</span></p>
+      <p class="destination-info"><strong>Country:</strong> <span id="country-name">Country
+          Name</span></p><br>
+
+      <!-- Overall Score Label and Value -->
+      <p class="overall-score-label">Overall Score</p>
+      <div class="overall-score-value" id="score-percentage">87%</div>
+
+      <!-- Overall Score Bar -->
+      <div class="overall-score-bar">
+        <div class="overall-score-fill" id="overall-score-fill"></div>
+      </div><br>
+
+      <!-- Evaluation Note and Date -->
+      <p class="evaluation-note">The scores reflect an independent expert evaluation on</p>
+      <p class="date" id="current-date"></p>
+    </div>
+
+    <!-- Right Column: Category Scores -->
+    <div class="theme-scores">
+      <div class="theme-score">
+        <div class="score-bar">
+          <div class="score-fill" style="width: 70%;"></div>
+          <div class="theme-text">
+            <span class="theme-icon">🍏</span><span>Food & Products</span>
+          </div>
+        </div>
+      </div>
+      <div class="theme-score">
+        <div class="score-bar">
+          <div class="score-fill" style="width: 85%;"></div>
+          <div class="theme-text">
+            <span class="theme-icon">🌍</span><span>Caring for People</span>
+          </div>
+        </div>
+      </div>
+      <div class="theme-score">
+        <div class="score-bar">
+          <div class="score-fill" style="width: 90%;"></div>
+          <div class="theme-text">
+            <span class="theme-icon">💼</span><span>Good Employment</span>
+          </div>
+        </div>
+      </div>
+      <div class="theme-score">
+        <div class="score-bar">
+          <div class="score-fill" style="width: 80%;"></div>
+          <div class="theme-text">
+            <span class="theme-icon">🌱</span><span>Reducing Pollution</span>
+          </div>
+        </div>
+      </div>
+      <div class="theme-score">
+        <div class="score-bar">
+          <div class="score-fill" style="width: 65%;"></div>
+          <div class="theme-text">
+            <span class="theme-icon">🌡️</span><span>Caring for Climate</span>
+          </div>
+        </div>
+      </div>
+      <div class="theme-score">
+        <div class="score-bar">
+          <div class="score-fill" style="width: 75%;"></div>
+          <div class="theme-text">
+            <span class="theme-icon">♻️</span><span>Reducing Waste</span>
+          </div>
+        </div>
+      </div>
+      <div class="theme-score">
+        <div class="score-bar">
+          <div class="score-fill" style="width: 90%;"></div>
+          <div class="theme-text">
+            <span class="theme-icon">💧</span><span>Caring for Water</span>
+          </div>
+        </div>
+      </div>
+      <div class="theme-score">
+        <div class="score-bar">
+          <div class="score-fill" style="width: 80%;"></div>
+          <div class="theme-text">
+            <span class="theme-icon">🌳</span><span>Caring for Nature</span>
+          </div>
+        </div>
+      </div>
+      <div class="theme-score">
+        <div class="score-bar">
+          <div class="score-fill" style="width: 85%;"></div>
+          <div class="theme-text">
+            <span class="theme-icon">🏛️</span><span>Caring for Culture</span>
+          </div>
+        </div>
+      </div>
+      <div class="theme-score">
+        <div class="score-bar">
+          <div class="score-fill" style="width: 70%;"></div>
+          <div class="theme-text">
+            <span class="theme-icon">📊</span><span>Management & Info</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
-    // Retrieve and display the score from sessionStorage
-    const scorePercentage = sessionStorage.getItem('finalScore');
-    document.getElementById('score-percentage').innerText = scorePercentage ? `${scorePercentage}%` : "N/A";
+    // Retrieve the overall score from sessionStorage
+    const scorePercentage = sessionStorage.getItem('finalScore') || 87; // Default to 87% if no score is available
+
+    // Set overall score display
+    document.getElementById('score-percentage').innerText = `${scorePercentage}%`;
+    document.getElementById('overall-score-fill').style.width = `${scorePercentage}%`;
+
+    // Set destination and country names
+    document.getElementById('destination-name').innerText = sessionStorage.getItem('destination-name') || 'Your Destination';
+    document.getElementById('country-name').innerText = sessionStorage.getItem('country-name') || 'Country Name';
+
+    // Display current date
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    document.getElementById('current-date').innerText = formattedDate;
   </script>
 </body>
-
 </html>

@@ -2,7 +2,7 @@
 
 /* Root variables */
 :root {
-  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0.24);
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   --main-color: #4CAF50;
   --hover-color: #388E3C;
   --background-color: #f4f4f4;
@@ -11,15 +11,11 @@
   --text-color: #333;
 }
 
+/* General reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-/* Conditional sections hidden by default */
-.conditional {
-  display: none;
 }
 
 /* Body styling */
@@ -56,9 +52,43 @@ form {
   font-size: 18px;
   font-weight: bold;
   color: var(--main-color);
+  display: block;
+  margin-bottom: 5px;
+  /* Space between the question and options */
 }
 
-/* Input fields and select boxes */
+/* Radio options styling */
+.radio-options {
+  margin-top: 5px;
+  /* Space between question label and radio options */
+}
+
+.radio-options input[type="radio"] {
+  margin-right: 5px;
+}
+
+.radio-options label {
+  font-size: 16px;
+  display: inline-block;
+  margin-bottom: 3px;
+  /* Minimal space between Yes and No */
+}
+
+/* Conditional section styling - hidden by default */
+.conditional {
+  display: none;
+  margin-top: 10px;
+  padding-left: 20px;
+  background-color: var(--light-bg-color);
+  border-left: 4px solid var(--main-color);
+}
+
+.conditional p {
+  margin-bottom: 10px;
+  /* Space between "Select all that apply" and checkboxes */
+}
+
+/* Input fields, checkboxes, and select boxes */
 .question-group select,
 .question-group input[type="text"],
 .question-group textarea {
@@ -69,25 +99,15 @@ form {
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 16px;
-  box-sizing: border-box;
 }
 
 /* Styling for radio buttons and checkboxes */
 .question-group input[type="checkbox"],
 .question-group input[type="radio"] {
-  margin-right: 10px;
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
-/* Conditional section styling */
-.conditional {
-  margin-top: 10px;
-  padding-left: 20px;
-  background-color: var(--light-bg-color);
-  border-left: 4px solid var(--main-color);
-}
-
-/* Submit Button - Hidden initially */
+/* Submit Button */
 #submit-button {
   display: none;
   width: 100%;
@@ -124,5 +144,13 @@ form {
 
   #submit-button {
     font-size: 16px;
+  }
+
+  .radio-options label {
+    font-size: 14px;
+  }
+
+  .conditional {
+    font-size: 14px;
   }
 }
