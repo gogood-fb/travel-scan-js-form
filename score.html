@@ -34,6 +34,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       overflow: hidden;
+      padding-top: 60px;
     }
 
     /* Left Column - Score Summary */
@@ -158,6 +159,15 @@
       flex-direction: column;
       justify-content: space-between;
     }
+    .logo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 150px; /* Adjust to the desired small size */
+      height: auto;
+      z-index: 1; /* Ensures it stays above other content */
+    }
+
 
     /* Responsive design */
     @media (max-width: 600px) {
@@ -168,17 +178,17 @@
       .score-info,
       .theme-scores {
         width: 100%;
-        padding: 20px;
+        padding: 50px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="score-container">
+  <div class="score-container" style="position: relative;">
+    <img src="green_destinations_logo.jpg" alt="Green Destinations Logo" class="logo">
     <!-- Left Column: Overall Score Summary -->
     <div class="score-info">
-      <h1>Green Destinations</h1>
       <h2>Good Travel Scorecard</h2><br>
 
       <!-- Destination Info -->

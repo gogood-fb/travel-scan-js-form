@@ -134,6 +134,17 @@ form {
   padding: 10px;
   border-radius: 5px;
 }
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 80px;
+  /* Adjust to the desired small size */
+  height: auto;
+  z-index: 1;
+  /* Ensures it stays above other content */
+}
+
 
 /* Responsive design */
 @media (max-width: 768px) {
