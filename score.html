@@ -34,7 +34,6 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-      padding-top: 60px;
     }
 
     /* Left Column - Score Summary */
@@ -44,6 +43,7 @@
       width: 40%;
       text-align: center;
       border-right: 4px solid #e16639;
+      padding-top: 100px;
     }
 
     .score-info h1 {
@@ -163,13 +163,11 @@
       position: absolute;
       top: 10px;
       left: 10px;
-      width: 150px; /* Adjust to the desired small size */
+      width: 150px;
       height: auto;
-      z-index: 1; /* Ensures it stays above other content */
+      z-index: 1; 
     }
 
-
-    /* Responsive design */
     @media (max-width: 600px) {
       .score-container {
         flex-direction: column;
@@ -192,10 +190,9 @@
       <h2>Good Travel Scorecard</h2><br>
 
       <!-- Destination Info -->
-      <p class="destination-info"><strong>Destination Name:</strong> <span
-          id="destination-name">Your Destination</span></p>
-      <p class="destination-info"><strong>Country:</strong> <span id="country-name">Country
-          Name</span></p><br>
+      <p class="destination-info"><strong>Destination Name: </strong><span
+          id="destination-name"></span></p>
+      <p class="destination-info"><strong>Country: </strong><span id="country-name"></span></p><br>
 
       <!-- Overall Score Label and Value -->
       <p class="overall-score-label">Overall Score</p>

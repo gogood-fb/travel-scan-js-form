@@ -33,11 +33,19 @@ body {
 form {
   background-color: #fff;
   padding: 30px;
+  padding-top: 100px;
   border-radius: 10px;
   box-shadow: var(--box-shadow);
-  max-width: 600px;
-  width: 100%;
+  max-width: 800px;
+  width: 90%;
   margin: 20px;
+  position: relative;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 /* Question container styling */
@@ -127,6 +135,7 @@ form {
 
 /* Output area styling */
 #form-output {
+  display: none;
   margin-top: 20px;
   background-color: #e8f5e9;
   border-left: 4px solid var(--main-color);
@@ -134,15 +143,18 @@ form {
   padding: 10px;
   border-radius: 5px;
 }
+
+#form-output:empty {
+  display: none;
+}
+
 .logo {
   position: absolute;
   top: 10px;
   left: 10px;
-  width: 80px;
-  /* Adjust to the desired small size */
+  width: 150px;
   height: auto;
   z-index: 1;
-  /* Ensures it stays above other content */
 }
 
 
@@ -163,5 +175,14 @@ form {
 
   .conditional {
     font-size: 14px;
+  }
+  .logo {
+    width: 60px;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  form {
+    padding-top: 80px;
   }
 }
