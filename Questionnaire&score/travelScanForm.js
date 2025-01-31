@@ -1,130 +1,99 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const totalPointsPossible = 104;
-    let earnedPoints = 0;
+  const totalPointsPossible = 104;
+  let earnedPoints = 0;
 
-    // Retrieve saved data from localStorage on load
-    const savedDestinationName = localStorage.getItem('destination-name') || '';
-    const savedCountryName = localStorage.getItem('country-name') || '';
-    document.getElementById('destination-name').value = savedDestinationName;
-    document.getElementById('country-name').value = savedCountryName;
+  const destinationName = localStorage.getItem('destination-name') || 'Unknown Destination';
+  const countryName = localStorage.getItem('country-name') || 'Unknown Country';
 
-    // Save destination info when inputs change
-    document.getElementById('destination-name').addEventListener('input', () => {
-        localStorage.setItem('destination-name', document.getElementById('destination-name').value);
-    });
+  // Define the categories and their respective question IDs
+  const categories = {
+    "Food & Products": [1, 2, 3],
+    "Caring for People": [4, 5, 6],
+    "Good Employment": [7, 8, 9],
+    "Reducing Pollution": [10, 11],
+    "Caring for Climate": [12, 13],
+    "Reducing Waste": [14, 15],
+    "Caring for Water": [16, 17],
+    "Caring for Nature": [18, 19],
+    "Caring for Culture": [20, 21],
+    "Management & Info": [22, 23],
+  };
 
-    document.getElementById('country-name').addEventListener('input', () => {
-        localStorage.setItem('country-name', document.getElementById('country-name').value);
-    });
+  let categoryScores = {};
 
-    // Function to toggle visibility of conditional sections
-    function toggleConditional(selectElement, conditionalElement) {
-        if (selectElement.value === 'yes') {
-            conditionalElement.style.display = 'block';
-        } else if (selectElement.value === 'no') {
-            conditionalElement.style.display = 'none';
-        }
+  function toggleConditional(questionGroup) {
+    const yesRadio = questionGroup.querySelector('input[type="radio"][value="yes"]');
+    const conditionalSection = questionGroup.querySelector('.conditional');
+
+    if (yesRadio && conditionalSection) {
+      conditionalSection.style.display = yesRadio.checked ? 'block' : 'none';
     }
+  }
 
-    // Add event listeners to toggle conditional sections
-    document.querySelectorAll('.question-group').forEach((questionGroup) => {
-        const yesNoInputs = questionGroup.querySelectorAll('input[type="radio"]');
-        const conditionalElement = questionGroup.querySelector('.conditional');
-
-        yesNoInputs.forEach(input => {
-            input.addEventListener('change', function () {
-                toggleConditional(input, conditionalElement);
-                checkFormCompletion(); // Check if form completion conditions are met after each change
-                calculateScore(); // Update score whenever a selection is made
-            });
-        });
-    });
-
-    // Function to calculate score for yes/no questions, with an option for n/a
-    function scoreYesNo(selectElement, yesPoints = 1) {
-        if (selectElement.value === 'yes') {
-            return yesPoints;
-        } else if (selectElement.value === 'na') {
-            return 0;
-        } else {
-            return 0;
-        }
-    }
-
-    // Calculate the total score
-    function calculateScore() {
-        earnedPoints = 0;
-
-        // Add points for each yes/no question
-        for (let i = 1; i <= 26; i++) {
-            const yesRadio = document.getElementById(`question-${i}-yes`);
-            if (yesRadio && yesRadio.checked) {
-                earnedPoints += scoreYesNo(yesRadio, 1);
-            }
-        }
-
-        // Add points from checked conditional checkboxes
-        document.querySelectorAll('.conditional input[type="checkbox"]:checked').forEach(() => {
-            earnedPoints += 1;
-        });
-
-        // Add points from selected conditional radio buttons
-        document.querySelectorAll('.conditional input[type="radio"]:checked').forEach((radio) => {
-            earnedPoints += parseInt(radio.value);
-        });
-    }
-
-    // Show submit button after all required questions (up to 26) are answered
-    const submitButton = document.getElementById('submit-button');
-
-    function checkFormCompletion() {
-        let allAnswered = true;
-
-        // Check if all required questions (up to 26) are answered
-        for (let i = 1; i <= 26; i++) {
-            const yesRadio = document.getElementById(`question-${i}-yes`);
-            const noRadio = document.getElementById(`question-${i}-no`);
-
-            if ((yesRadio && !yesRadio.checked) && (noRadio && !noRadio.checked)) {
-                allAnswered = false;
-                break;
-            }
-        }
-
-        // Show the submit button if all required questions are answered
-        if (allAnswered) {
-            submitButton.style.display = 'block';
-        } else {
-            submitButton.style.display = 'none';
-        }
-    }
-
-    // Attach change event listeners to each required question up to 26
-    for (let i = 1; i <= 26; i++) {
-        const yesRadio = document.getElementById(`question-${i}-yes`);
-        const noRadio = document.getElementById(`question-${i}-no`);
-
-        if (yesRadio && noRadio) {
-            yesRadio.addEventListener('change', checkFormCompletion);
-            noRadio.addEventListener('change', checkFormCompletion);
-        }
-    }
-
-    // Existing code for form submission
-    const form = document.getElementById('travel-scan-form');
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
+  document.querySelectorAll('.question-group').forEach((questionGroup) => {
+    questionGroup.querySelectorAll('input[type="radio"]').forEach((radio) => {
+      radio.addEventListener('change', () => {
+        toggleConditional(questionGroup);
         calculateScore();
-
-        // Save overall score in sessionStorage
-        const scorePercentage = Math.round((earnedPoints / totalPointsPossible) * 100);
-        sessionStorage.setItem('finalScore', scorePercentage);
-
-        // Save destination info for the scorecard display
-        sessionStorage.setItem('destination-name', document.getElementById('destination-name').value);
-        sessionStorage.setItem('country-name', document.getElementById('country-name').value);
-
-        // Redirect to score page
-        window.location.href = 'score.html';
+      });
     });
+
+    toggleConditional(questionGroup);
+  });
+
+  function calculateScore() {
+    earnedPoints = 0;
+    categoryScores = {};
+
+    // Initialize category scores
+    Object.keys(categories).forEach((category) => {
+      categoryScores[category] = 0;
+    });
+
+    document.querySelectorAll('.question-group').forEach((questionGroup) => {
+      const questionId = parseInt(questionGroup.id.split('-')[1]);
+
+      const category = Object.keys(categories).find((cat) =>
+        categories[cat].includes(questionId)
+      );
+
+      if (!category) return;
+
+      const yesRadio = questionGroup.querySelector('input[type="radio"][value="yes"]');
+      if (yesRadio && yesRadio.checked) {
+        earnedPoints += 1;
+        categoryScores[category] += 1;
+      }
+
+      questionGroup.querySelectorAll('.conditional input[type="checkbox"]:checked').forEach(() => {
+        earnedPoints += 1;
+        categoryScores[category] += 1;
+      });
+
+      questionGroup
+        .querySelectorAll('.conditional input[type="radio"]:checked')
+        .forEach((radio) => {
+          const points = parseInt(radio.value) || 0;
+          earnedPoints += points;
+          categoryScores[category] += points;
+        });
+    });
+
+    console.log('Earned Points:', earnedPoints);
+    console.log('Category Scores:', categoryScores);
+  }
+
+  document.getElementById('travel-scan-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    calculateScore();
+
+    sessionStorage.setItem('finalScore', Math.round((earnedPoints / totalPointsPossible) * 100));
+    sessionStorage.setItem('categoryScores', JSON.stringify(categoryScores));
+    sessionStorage.setItem('destination-name', destinationName);
+    sessionStorage.setItem('country-name', countryName);
+
+    window.location.href = 'score.html';
+  });
+
+  calculateScore();
 });

@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Retrieve the country from localStorage and prefill the "Country" field
   const savedCountry = localStorage.getItem('countryName');
   if (savedCountry) {
     document.getElementById('country').value = savedCountry;
+  } else {
+    alert('Please enter your country on the welcome page.');
+    window.location.href = '../welcomePage/welcome.html';
   }
 
-  // Form submission logic
   document.getElementById('signup-form').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Example validation (optional)
     const fullName = document.getElementById('full-name').value.trim();
     const email = document.getElementById('email').value.trim();
     const phone = document.getElementById('phone').value.trim();
@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    // Redirect to the questionnaire page after successful submission
     window.location.href = '../Questionnaire&score/questionnaire.html';
   });
 });

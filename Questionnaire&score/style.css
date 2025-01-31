@@ -127,7 +127,7 @@ h2 {
 
 /* Submit Button */
 #submit-button {
-  display: none;
+  display: block;
   width: 100%;
   padding: 15px;
   background-color: var(--main-color);

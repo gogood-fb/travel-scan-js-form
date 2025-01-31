@@ -12,36 +12,28 @@
   <div class="form-container">
     <form id="signup-form">
       <h2>Sign Up</h2>
-
-      <!-- Full Name -->
+      
       <label for="full-name">Full Name:</label>
       <input type="text" id="full-name" name="full-name" required>
 
-      <!-- Email -->
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required>
 
-      <!-- Company -->
       <label for="company">Company:</label>
       <input type="text" id="company" name="company" required>
 
-      <!-- City -->
       <label for="city">City:</label>
       <input type="text" id="city" name="city" required>
 
-      <!-- State/Region/Province -->
       <label for="state">State/Region/Province:</label>
       <input type="text" id="state" name="state" required>
 
-      <!-- Country -->
       <label for="country">Country:</label>
       <input type="text" id="country" name="country" readonly>
 
-      <!-- Phone -->
       <label for="phone">Phone (WhatsApp):</label>
       <input type="tel" id="phone" name="phone" required>
 
-      <!-- Business Type -->
       <label for="business-type">Business Type:</label>
       <select id="business-type" name="business-type" required>
         <option value="" disabled selected>Select a business type</option>
@@ -51,20 +43,16 @@
         <option value="Other">Other</option>
       </select>
 
-      <!-- Business Size -->
       <label for="business-size">
-        Business size (for accommodations: number of rooms; for other establishments: number of
-        full-time employees):
+        Business size: <br> Accommodations: Number of rooms <br> Other establishments: Number of
+        full-time employees
       </label>
       <input type="number" id="business-size" name="business-size" required>
-
-     
 
       <button type="submit">Submit</button>
     </form>
   </div>
 
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="signUp.js"></script>
 </body>
 
