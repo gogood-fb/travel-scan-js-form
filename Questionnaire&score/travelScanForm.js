@@ -2,21 +2,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const totalPointsPossible = 104;
   let earnedPoints = 0;
 
-  const destinationName = localStorage.getItem('destination-name') || 'Unknown Destination';
-  const countryName = localStorage.getItem('country-name') || 'Unknown Country';
-
-  // Define the categories and their respective question IDs
   const categories = {
-    "Food & Products": [1, 2, 3],
-    "Caring for People": [4, 5, 6],
-    "Good Employment": [7, 8, 9],
-    "Reducing Pollution": [10, 11],
-    "Caring for Climate": [12, 13],
-    "Reducing Waste": [14, 15],
-    "Caring for Water": [16, 17],
-    "Caring for Nature": [18, 19],
-    "Caring for Culture": [20, 21],
-    "Management & Info": [22, 23],
+    "Management & Information": [1, 2],
+    "Caring for People": [3, 4, 5],
+    "Good Employment": [6, 7, 8],
+    "Caring for Climate": [9, 10, 11, 12, 13, 14],
+    "Reducing Waste": [15, 16, 17, 18],
+    "Caring for Water": [19, 20],
+    "Reducing Pollution": [21, 22],
+    "Food & Products": [23, 24],
+    "Caring for Nature": [25],
+    "Caring for Culture": [26],
   };
 
   let categoryScores = {};
@@ -26,14 +22,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const conditionalSection = questionGroup.querySelector('.conditional');
 
     if (yesRadio && conditionalSection) {
-      conditionalSection.style.display = yesRadio.checked ? 'block' : 'none';
+      if (yesRadio.checked) {
+        conditionalSection.style.display = 'block';
+      } else {
+        conditionalSection.style.display = 'none';
+      }
     }
   }
 
   document.querySelectorAll('.question-group').forEach((questionGroup) => {
-    questionGroup.querySelectorAll('input[type="radio"]').forEach((radio) => {
+    const radioButtons = questionGroup.querySelectorAll('input[type="radio"]');
+
+    radioButtons.forEach((radio) => {
       radio.addEventListener('change', () => {
-        toggleConditional(questionGroup);
+        toggleConditional(questionGroup); 
         calculateScore();
       });
     });
@@ -45,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
     earnedPoints = 0;
     categoryScores = {};
 
-    // Initialize category scores
     Object.keys(categories).forEach((category) => {
       categoryScores[category] = 0;
     });
@@ -89,11 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     sessionStorage.setItem('finalScore', Math.round((earnedPoints / totalPointsPossible) * 100));
     sessionStorage.setItem('categoryScores', JSON.stringify(categoryScores));
-    sessionStorage.setItem('destination-name', destinationName);
-    sessionStorage.setItem('country-name', countryName);
 
     window.location.href = 'score.html';
   });
-
-  calculateScore();
 });

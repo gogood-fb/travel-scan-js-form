@@ -82,6 +82,7 @@
 
   .overall-score-bar {
     background-color: #3e3e3e;
+    overflow: hidden;
     border-radius: 15px;
     height: 30px;
     width: 80%;
@@ -112,6 +113,8 @@
   }
 
   .score-fill {
+    width: 0%;
+    max-width: 100%;
     height: 100%;
     border-radius: 15px;
     position: absolute;
@@ -119,9 +122,7 @@
     top: 0;
     z-index: 1;
     background-color: #377943;
-    /* Solid dark green for score fill */
     transition: width 0.5s ease;
-    /* Smooth transition for width change */
   }
 
   .theme-text {
@@ -189,24 +190,24 @@
       <div class="overall-score-bar">
         <div class="overall-score-fill" id="overall-score-fill" style="width: 0%;"></div>
       </div><br>
-
+      
       <p class="evaluation-note">The scores reflect an independent expert evaluation on</p>
       <p class="date" id="current-date"></p>
     </div>
-
+    
       <div class="theme-scores">
         <div class="theme-score">
           <div class="score-bar">
-            <div class="score-fill" id="food-products"></div>
+            <div class="score-fill" id="management-information"></div>
             <div class="theme-text">
-              <span class="theme-icon">🍏</span> Food & Products
+              <span class="theme-icon">📊</span> Management & Information
             </div>
           </div>
         </div>
       
         <div class="theme-score">
           <div class="score-bar">
-            <div class="score-fill" id="caring-people"></div>
+            <div class="score-fill" id="caring-for-people"></div>
             <div class="theme-text">
               <span class="theme-icon">🌍</span> Caring for People
             </div>
@@ -218,15 +219,6 @@
             <div class="score-fill" id="good-employment"></div>
             <div class="theme-text">
               <span class="theme-icon">💼</span> Good Employment
-            </div>
-          </div>
-        </div>
-      
-        <div class="theme-score">
-          <div class="score-bar">
-            <div class="score-fill" id="reducing-pollution"></div>
-            <div class="theme-text">
-              <span class="theme-icon">🌱</span> Reducing Pollution
             </div>
           </div>
         </div>
@@ -260,6 +252,24 @@
       
         <div class="theme-score">
           <div class="score-bar">
+            <div class="score-fill" id="reducing-pollution"></div>
+            <div class="theme-text">
+              <span class="theme-icon">🌱</span> Reducing Pollution
+            </div>
+          </div>
+        </div>
+      
+        <div class="theme-score">
+          <div class="score-bar">
+            <div class="score-fill" id="food-products"></div>
+            <div class="theme-text">
+              <span class="theme-icon">🍏</span> Food & Products
+            </div>
+          </div>
+        </div>
+      
+        <div class="theme-score">
+          <div class="score-bar">
             <div class="score-fill" id="caring-for-nature"></div>
             <div class="theme-text">
               <span class="theme-icon">🌳</span> Caring for Nature
@@ -275,40 +285,32 @@
             </div>
           </div>
         </div>
-    
-        <div class="theme-score">
-          <div class="score-bar">
-            <div class="score-fill" id="management-info"></div>
-            <div class="theme-text">
-              <span class="theme-icon">📊</span> Management & Info
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-      const finalScore = parseInt(sessionStorage.getItem('finalScore'), 10) || 0;
+    document.addEventListener('DOMContentLoaded', () => {
+      const finalScore = Math.min(parseInt(sessionStorage.getItem('finalScore'), 10) || 0, 100);
       const categoryScores = JSON.parse(sessionStorage.getItem('categoryScores')) || {};
       const destinationName = sessionStorage.getItem('destination-name') || 'Your Destination';
       const countryName = sessionStorage.getItem('country-name') || 'Country Name';
 
+      // Update the overall score display
       document.getElementById('score-percentage').innerText = `${finalScore}%`;
       document.getElementById('overall-score-fill').style.width = `${finalScore}%`;
 
       const totalPointsPerCategory = {
-        "Food & Products": 10,
-        "Caring for People": 10,
-        "Good Employment": 12,
-        "Reducing Pollution": 10,
-        "Caring for Climate": 8,
-        "Reducing Waste": 10,
-        "Caring for Water": 8,
+        "Management & Information": 6,
+        "Caring for People": 3,
+        "Good Employment": 3,
+        "Caring for Climate": 14,
+        "Reducing Waste": 12,
+        "Caring for Water": 6,
+        "Reducing Pollution": 8,
+        "Food & Products": 6,
         "Caring for Nature": 6,
         "Caring for Culture": 6,
-        "Management & Info": 12,
       };
 
       Object.keys(categoryScores).forEach((category) => {
@@ -316,16 +318,19 @@
         const scoreBar = document.getElementById(id);
 
         if (scoreBar) {
-          const percentage = Math.round((categoryScores[category] / totalPointsPerCategory[category]) * 100);
+          const categoryScore = categoryScores[category] || 0;
+          const totalCategoryPoints = totalPointsPerCategory[category];
+          const percentage = Math.round((categoryScore / totalCategoryPoints) * 100);
           scoreBar.style.width = `${percentage}%`;
-          scoreBar.style.backgroundColor = '#377943'; 
+          scoreBar.style.backgroundColor = '#377943';
         }
       });
 
-
+      // Update destination name and country name
       document.getElementById('destination-name').innerText = destinationName;
       document.getElementById('country-name').innerText = countryName;
 
+      // Update evaluation date
       const currentDate = new Date();
       document.getElementById('current-date').innerText = currentDate.toLocaleDateString('en-US', {
         year: 'numeric',
@@ -334,7 +339,7 @@
       });
     });
 
-</script>
+  </script>
 
 
 </body>
